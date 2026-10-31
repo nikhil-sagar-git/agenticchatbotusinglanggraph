@@ -493,13 +493,22 @@ for thread_id in st.session_state["chat_threads"][::-1]:
 # ========================= Main chat interface =========================
 
 # Display all messages from the currently selected conversation
+# for message in st.session_state["message_history"]:
+
+#     # Create either a user chat bubble or assistant chat bubble
+#     with st.chat_message(message["role"]):
+
+#         # Display the message content
+#         st.text(message["content"])
+
+
+
 for message in st.session_state["message_history"]:
 
-    # Create either a user chat bubble or assistant chat bubble
     with st.chat_message(message["role"]):
 
-        # Display the message content
-        st.text(message["content"])
+        # Render Markdown properly when loading old conversations
+        st.markdown(message["content"])
 
 
 # ========================= HITL approval interface =========================
